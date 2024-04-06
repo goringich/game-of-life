@@ -46,11 +46,12 @@ class Stone : public Object {
   private:
     int turnsToReef;
   public:
-    Stone () : turnsToReef(10) {symbol = u8"\u26F0";}
+    Stone () : turnsToReef(std::rand() % 3+5) {symbol = u8"\u26F0";}
     void update() override {
       if (turnsToReef == 0) {
-        // delete this;🪸
+        // delete this;//🪸
         this->symbol = u8"🪸";
+        return;
       } else 
         turnsToReef--;
     }
@@ -60,38 +61,40 @@ class Reef : public Object {
   private:
     int turnsToStone;
   public:
-    Reef () : turnsToStone(10) {symbol = u8"🪸";}
+    Reef () : turnsToStone(std::rand() % 3+5) {symbol = u8"🪸";}
     void update() override {
       if (turnsToStone == 0) {
         // delete this;
         this->symbol = u8"\u26F0";
+        return;
       } else 
         turnsToStone--;
     }
   
 };
 
-/*
-Prey
-Добыча.
-Бедное существо, вынужденное прятаться от хищников и размножаться когда получится.
-Скорость - 1 клетка.
-Если рядом есть Predator или ApexPredator, то движется в противоположную ему сторону.
-Взрослеет через N +- rand итераций.
-Умирает через M +- rand итераций. (M > N)
-Если Prey "взрослый"
-    и на соседней клетке есть еще один "взрослый" Prey
-    и в радиусе нет хищников то =>
-на любой свободной клекте по-соседству рождается новый Prey.
-Время жизни новорожденного должно расчитываться из максимальных времен жизни родителей (+ рандом). Поиграем в эволюцию? :)
-*/
-
 class Prey : public Object {
   private:
-    // int turnsToStone;
+    int age;
+    int maxAge;
+    bool isAdult;
+    int turnsToReproduce;
   public:
-    Prey () {symbol = u8"\U0001F990";}
+    Prey () : age(0), maxAge(10), isAdult(false), turnsToReproduce(7) {symbol = u8"\U0001F990";}
     void update() override {
+      age++;
+      if (age >= 7)
+        isAdult = true;
+      if (age == 10){
+        symbol = u8"💀";
+        return;
+      } else if (age == 12){
+        symbol = u8" ";
+        return;
+      }
+      
+      if (isAdult)
+        turnsToReproduce == 0 ? turnsToReproduce = 10 : turnsToReproduce--;
     }
 };
 
@@ -170,7 +173,7 @@ int main(){
   while (true){
     ocean.display();
     ocean.tick();
-    if (ocean.iterationCounter >= 10)
+    if (ocean.iterationCounter >= 20)
       break;
   }
 
