@@ -59,7 +59,11 @@
     "optional": "cpp",
     "random": "cpp",
     "string": "cpp",
-    "codecvt": "cpp"
+    "codecvt": "cpp",
+    "chrono": "cpp",
+    "forward_list": "cpp",
+    "iomanip": "cpp",
+    "sstream": "cpp"
   },
   "cmake.configureOnOpen": true
 }

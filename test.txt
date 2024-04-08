@@ -1,241 +1,295 @@
-Reef symbol: 🪸
-Iteration count: 0
-🦐 🦐     🪸 ⛰ ⛰ 🪸 🪸   
-    🪸     🪸   🪸 🪸   
-🪸   ⛰ ⛰   ⛰ 🪸 ⛰   🪸 
-  🪸     🪸 🪸     🦐 🪸 
-🪸 🪸 ⛰ 🪸   🪸 🪸 🪸 ⛰ 🪸 
-  🪸 ⛰ 🪸     🪸   🦐 🪸 
-⛰ 🦐 🪸 🪸     🪸 🪸 🪸 ⛰ 
-🪸 ⛰   ⛰ ⛰ 🪸 ⛰ 🪸   ⛰ 
-  ⛰   ⛰ 🪸 🪸   ⛰     
-  🪸 🪸       🦐   🪸 🪸 
+#include <iostream>
+#include <vector>
+#include <cstdlib>
+#include <ctime>
+#include <string>
+#include <codecvt>
+#include <locale>
+#include <thread>
+#include <chrono> 
+#include <windows.h>
 
-Iteration count: 1
-🦐 🦐 🦐 🦐 🪸 ⛰ ⛰ 🪸 🪸 🦐 
-🦐 🦐 🪸 🦐 🦐 🪸 🦐 🪸 🪸 🦐 
-🪸 🦐 ⛰ ⛰ 🦐 ⛰ 🪸 ⛰ 🦐 🪸 
-🦐 🪸 🦐 🦐 🪸 🪸 🦐 🦐 🦐 🪸 
-🪸 🪸 ⛰ 🪸 🦐 🪸 🪸 🪸 ⛰ 🪸 
-🦐 🪸 ⛰ 🪸 🦐 🦐 🪸 🦐 🦐 🪸 
-⛰ 🦐 🪸 🪸 🦐 🦐 🪸 🪸 🪸 ⛰ 
-🪸 ⛰ 🦐 ⛰ ⛰ 🪸 ⛰ 🪸 🦐 ⛰ 
-🦐 ⛰ 🦐 ⛰ 🪸 🪸 🦐 ⛰ 🦐 🦐 
-🦐 🪸 🪸 🦐 🦐 🦐 🦐 🦐 🪸 🪸 
+void clearScreen() {
+#ifdef _WIN32
+    COORD topLeft = {0, 0};
+    HANDLE console = GetStdHandle(STD_OUTPUT_HANDLE);
+    CONSOLE_SCREEN_BUFFER_INFO screen;
+    DWORD written;
 
-Iteration count: 2
-🦐 🦐 🦐 🦐 🪸 ⛰ ⛰ 🪸 🪸 🦐 
-🦐 🦐 🪸 🦐 🦐 🪸 🦐 🪸 🪸 🦐 
-🪸 🦐 ⛰ ⛰ 🦐 ⛰ 🪸 ⛰ 🦐 🪸 
-🦐 🪸 🦐 🦐 🪸 🪸 🦐 🦐 🦐 🪸 
-🪸 🪸 ⛰ 🪸 🦐 🪸 🪸 🪸 ⛰ 🪸 
-🦐 🪸 ⛰ 🪸 🦐 🦐 🪸 🦐 🦐 🪸 
-⛰ 🦐 🪸 🪸 🦐 🦐 🪸 🪸 🪸 ⛰ 
-🪸 ⛰ 🦐 ⛰ ⛰ 🪸 ⛰ 🪸 🦐 ⛰ 
-🦐 ⛰ 🦐 ⛰ 🪸 🪸 🦐 ⛰ 🦐 🦐 
-🦐 🪸 🪸 🦐 🦐 🦐 🦐 🦐 🪸 🪸 
+    GetConsoleScreenBufferInfo(console, &screen);
+    FillConsoleOutputCharacterA(console, ' ', screen.dwSize.X * screen.dwSize.Y * 2, topLeft, &written);
+    FillConsoleOutputAttribute(console, FOREGROUND_GREEN | FOREGROUND_RED | FOREGROUND_BLUE, screen.dwSize.X * screen.dwSize.Y * 2, topLeft, &written);
+    SetConsoleCursorPosition(console, topLeft);
+#else
+    std::system("clear");
+#endif
+}
 
-Iteration count: 3
-🦐 🦐 🦐 🦐 🪸 ⛰ ⛰ 🪸 🪸 🦐 
-🦐 🦐 🪸 🦐 🦐 🪸 🦐 🪸 🪸 🦐 
-🪸 🦐 ⛰ ⛰ 🦐 ⛰ 🪸 ⛰ 🦐 🪸 
-🦐 🪸 🦐 🦐 🪸 🪸 🦐 🦐 🦐 🪸 
-🪸 🪸 ⛰ 🪸 🦐 🪸 🪸 🪸 ⛰ 🪸 
-🦐 🪸 ⛰ 🪸 🦐 🦐 🪸 🦐 🦐 🪸 
-⛰ 🦐 🪸 🪸 🦐 🦐 🪸 🪸 🪸 ⛰ 
-🪸 ⛰ 🦐 ⛰ ⛰ 🪸 ⛰ 🪸 🦐 ⛰ 
-🦐 ⛰ 🦐 ⛰ 🪸 🪸 🦐 ⛰ 🦐 🦐 
-🦐 🪸 🪸 🦐 🦐 🦐 🦐 🦐 🪸 🪸 
 
-Iteration count: 4
-🦐 🦐 🦐 🦐 🪸 ⛰ ⛰ 🪸 🪸 🦐 
-🦐 🦐 🪸 🦐 🦐 🪸 🦐 🪸 🪸 🦐 
-🪸 🦐 ⛰ ⛰ 🦐 ⛰ 🪸 ⛰ 🦐 🪸 
-🦐 🪸 🦐 🦐 🪸 🪸 🦐 🦐 🦐 🪸 
-🪸 🪸 ⛰ 🪸 🦐 🪸 🪸 🪸 ⛰ 🪸 
-🦐 🪸 ⛰ 🪸 🦐 🦐 🪸 🦐 🦐 🪸 
-⛰ 🦐 🪸 🪸 🦐 🦐 🪸 🪸 🪸 ⛰ 
-🪸 ⛰ 🦐 ⛰ ⛰ 🪸 ⛰ 🪸 🦐 ⛰ 
-🦐 ⛰ 🦐 ⛰ 🪸 🪸 🦐 ⛰ 🦐 🦐 
-🦐 🪸 🪸 🦐 🦐 🦐 🦐 🦐 🪸 🪸 
+void setcur(int x1, int y1) {
+    COORD coord;
+    coord.X = x1;
+    coord.Y = y1;
+    SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), coord);
+}
 
-Iteration count: 5
-🦐 🦐 🦐 🦐 🪸 ⛰ ⛰ 🪸 🪸 🦐 
-🦐 🦐 🪸 🦐 🦐 🪸 🦐 🪸 🪸 🦐 
-🪸 🦐 ⛰ ⛰ 🦐 ⛰ 🪸 ⛰ 🦐 🪸 
-🦐 🪸 🦐 🦐 🪸 🪸 🦐 🦐 🦐 🪸 
-🪸 🪸 ⛰ 🪸 🦐 🪸 🪸 🪸 ⛰ 🪸 
-🦐 🪸 ⛰ 🪸 🦐 🦐 🪸 🦐 🦐 🪸 
-⛰ 🦐 🪸 🪸 🦐 🦐 🪸 🪸 🪸 ⛰ 
-🪸 ⛰ 🦐 ⛰ ⛰ 🪸 ⛰ 🪸 🦐 ⛰ 
-🦐 ⛰ 🦐 ⛰ 🪸 🪸 🦐 ⛰ 🦐 🦐 
-🦐 🪸 🪸 🦐 🦐 🦐 🦐 🦐 🪸 🪸 
+class Object {
+  public:
+    bool isMoved = false;
+    bool isAdult = false; 
+    virtual ~Object() {};
+    virtual void update() = 0;
+    virtual std::string getSymbol() const = 0;
+};
 
-Iteration count: 6
-🦐 🦐 🦐 🦐 🪸 ⛰ ⛰ 🪸 🪸 🦐 
-🦐 🦐 🪸 🦐 🦐 ⛰ 🦐 🪸 ⛰ 🦐 
-🪸 🦐 _ ⛰ 🦐 ⛰ 🪸 ⛰ 🦐 🪸 
-🦐 🪸 🦐 🦐 🪸 🪸 🦐 🦐 🦐 🪸 
-🪸 🪸 _ 🪸 🦐 🪸 ⛰ 🪸 _ 🪸 
-🦐 🪸 ⛰ 🪸 🦐 🦐 🪸 🦐 🦐 ⛰ 
-⛰ 🦐 🪸 🪸 🦐 🦐 🪸 ⛰ 🪸 ⛰ 
-🪸 _ 🦐 _ ⛰ 🪸 ⛰ 🪸 🦐 ⛰ 
-🦐 ⛰ 🦐 ⛰ 🪸 🪸 🦐 ⛰ 🦐 🦐 
-🦐 🪸 🪸 🦐 🦐 🦐 🦐 🦐 🪸 🪸 
+class Empty : public Object {
+  public:
+    Empty () {symbol = " ";}
+    void update() override {}
+    std::string getSymbol() const override { return symbol; }
+  private:
+    std::string symbol;
+};
 
-Iteration count: 7
-🦐 🦐 🦐 🦐 ⛰ ⛰ ⛰ 🪸 🪸 🦐 
-🦐 🦐 🪸 🦐 🦐 ⛰ 🦐 🪸 ⛰ 🦐 
-⛰ 🦐 _ _ 🦐 _ 🪸 _ 🦐 🪸 
-🦐 ⛰ 🦐 🦐 🪸 ⛰ 🦐 🦐 🦐 🪸 
-⛰ 🪸 _ 🪸 🦐 🪸 ⛰ ⛰ _ 🪸 
-🦐 ⛰ _ ⛰ 🦐 🦐 ⛰ 🦐 🦐 ⛰ 
-_ 🦐 ⛰ 🪸 🦐 🦐 🪸 ⛰ 🪸 _ 
-⛰ _ 🦐 _ ⛰ ⛰ ⛰ ⛰ 🦐 ⛰ 
-🦐 _ 🦐 _ ⛰ 🪸 🦐 ⛰ 🦐 🦐 
-🦐 ⛰ ⛰ 🦐 🦐 🦐 🦐 🦐 🪸 🪸 
+class Stone : public Object {
+  private:
+    int turnsToReef;
+  public:
+    Stone () : turnsToReef(std::rand() % 7) {symbol = u8"\u26F0";}
+    void update() override {
+      if (turnsToReef == 0) {
+        symbol = u8"&";
+      } else 
+        turnsToReef--;
+    }
+    std::string getSymbol() const override { return symbol; }
+  private:
+    std::string symbol;
+};
 
-Iteration count: 8
-🦐 🦐 🦐 🦐 ⛰ _ _ ⛰ ⛰ 🦐 
-🦐 🦐 ⛰ 🦐 🦐 ⛰ 🦐 ⛰ ⛰ 🦐 
-⛰ 🦐 _ _ 🦐 _ ⛰ _ 🦐 ⛰ 
-🦐 ⛰ 🦐 🦐 ⛰ ⛰ 🦐 🦐 🦐 ⛰ 
-⛰ ⛰ _ ⛰ 🦐 ⛰ ⛰ ⛰ _ ⛰ 
-🦐 ⛰ _ ⛰ 🦐 🦐 ⛰ 🦐 🦐 ⛰ 
-_ 🦐 ⛰ ⛰ 🦐 🦐 ⛰ ⛰ ⛰ _ 
-⛰ _ 🦐 _ _ ⛰ _ ⛰ 🦐 _ 
-🦐 _ 🦐 _ ⛰ ⛰ 🦐 _ 🦐 🦐 
-🦐 ⛰ ⛰ 🦐 🦐 🦐 🦐 🦐 ⛰ ⛰ 
+class Reef : public Object {
+  private:
+    int turnsToStone;
+  public:
+    Reef () : turnsToStone(std::rand() % 7) {symbol = u8"➿";}
+    void update() override {
+      if (turnsToStone == 0)
+        symbol = u8"\u26F0";
+      else 
+        turnsToStone--;
+    }
+    std::string getSymbol() const override { return symbol; }
+  private:
+    std::string symbol;
+};
 
-Iteration count: 9
-🦐 🦐 🦐 🦐 ⛰ _ _ ⛰ ⛰ 🦐 
-🦐 🦐 ⛰ 🦐 🦐 ⛰ 🦐 ⛰ ⛰ 🦐 
-⛰ 🦐 _ _ 🦐 _ ⛰ _ 🦐 ⛰ 
-🦐 ⛰ 🦐 🦐 ⛰ ⛰ 🦐 🦐 🦐 ⛰ 
-⛰ ⛰ _ ⛰ 🦐 ⛰ ⛰ ⛰ _ ⛰ 
-🦐 ⛰ _ ⛰ 🦐 🦐 ⛰ 🦐 🦐 ⛰ 
-_ 🦐 ⛰ ⛰ 🦐 🦐 ⛰ ⛰ ⛰ _ 
-⛰ _ 🦐 _ _ ⛰ _ ⛰ 🦐 _ 
-🦐 _ 🦐 _ ⛰ ⛰ 🦐 _ 🦐 🦐 
-🦐 ⛰ ⛰ 🦐 🦐 🦐 🦐 🦐 ⛰ ⛰ 
+class Prey : public Object {
+  private:
+    int age;
+    int maxAge;
+    int turnsToReproduce;
+    std::string symbol;
+  public:
+    Prey () : age(0), maxAge(10), turnsToReproduce(7), symbol(u8"∞" ) /* symbol(u8"><>" ) */{}
+    void update() override {
+      age++;
+      if (age >= 3)
+        isAdult = true;
+      if (age == 20){
+        symbol = u8"X";
+        return;
+      } else if (age == 22){
+        symbol = u8" ";
+        return;
+      }
+      
+      if (isAdult)
+        turnsToReproduce == 0 ? turnsToReproduce = 10 : turnsToReproduce--;
 
-Iteration count: 10
-💀 💀 💀 💀 ⛰ _ _ ⛰ ⛰ 🦐 
-💀 💀 ⛰ 💀 💀 ⛰ 💀 ⛰ ⛰ 🦐 
-⛰ 💀 _ _ 💀 _ ⛰ _ 💀 ⛰ 
-💀 ⛰ 💀 💀 ⛰ ⛰ 💀 💀 💀 ⛰ 
-⛰ ⛰ _ ⛰ 💀 ⛰ ⛰ ⛰ _ ⛰ 
-💀 ⛰ _ ⛰ 💀 💀 ⛰ 💀 💀 ⛰ 
-_ 💀 ⛰ ⛰ 💀 💀 ⛰ ⛰ ⛰ _ 
-⛰ _ 💀 _ _ ⛰ _ ⛰ 💀 _ 
-💀 _ 💀 _ ⛰ ⛰ 💀 _ 💀 💀 
-💀 ⛰ ⛰ 💀 💀 💀 💀 💀 ⛰ ⛰ 
+      if (isAdult && turnsToReproduce == 0)
+        turnsToReproduce = 10;
+    }
 
-Iteration count: 11
-💀 💀 💀 💀 ⛰ _ _ ⛰ ⛰ 💀 
-💀 💀 ⛰ 💀 💀 ⛰ 💀 ⛰ ⛰ 💀 
-⛰ 💀 _ _ 💀 _ ⛰ _ 💀 ⛰ 
-💀 ⛰ 💀 💀 ⛰ ⛰ 💀 💀 💀 ⛰ 
-⛰ ⛰ _ ⛰ 💀 ⛰ ⛰ ⛰ _ ⛰ 
-💀 ⛰ _ ⛰ 💀 💀 ⛰ 💀 💀 ⛰ 
-_ 💀 ⛰ ⛰ 💀 💀 ⛰ ⛰ ⛰ _ 
-⛰ _ 💀 _ _ ⛰ _ ⛰ 💀 _ 
-💀 _ 💀 _ ⛰ ⛰ 💀 _ 💀 💀 
-💀 ⛰ ⛰ 💀 💀 💀 💀 💀 ⛰ ⛰ 
+    std::string getSymbol() const override { return symbol; }
+};
 
-Iteration count: 12
-        ⛰ _ _ ⛰ ⛰ 💀 
-    ⛰     ⛰   ⛰ ⛰ 💀 
-⛰   _ _   _ ⛰ _   ⛰ 
-  ⛰     ⛰ ⛰       ⛰ 
-⛰ ⛰ _ ⛰   ⛰ ⛰ ⛰ _ ⛰ 
-  ⛰ _ ⛰     ⛰     ⛰ 
-_   ⛰ ⛰     ⛰ ⛰ ⛰ _ 
-⛰ _   _ _ ⛰ _ ⛰   _ 
-  _   _ ⛰ ⛰   _     
-  ⛰ ⛰           ⛰ ⛰ 
 
-Iteration count: 13
-        ⛰ _ _ ⛰ ⛰   
-    ⛰     ⛰   ⛰ ⛰   
-⛰   _ _   _ ⛰ _   ⛰ 
-  ⛰     ⛰ ⛰       ⛰ 
-⛰ ⛰ _ ⛰   ⛰ ⛰ ⛰ _ ⛰ 
-  ⛰ _ ⛰     ⛰     ⛰ 
-_   ⛰ ⛰     ⛰ ⛰ ⛰ _ 
-⛰ _   _ _ ⛰ _ ⛰   _ 
-  _   _ ⛰ ⛰   _     
-  ⛰ ⛰           ⛰ ⛰ 
+struct Ocean final {
+  public:
+    int start_emptyCount = 0, start_stoneCount = 0, start_reefCount = 0, start_preyCount = 0;
+    size_t iterationCounter;
 
-Iteration count: 14
-        ⛰ _ _ ⛰ ⛰   
-    ⛰     ⛰   ⛰ ⛰   
-⛰   _ _   _ ⛰ _   ⛰ 
-  ⛰     ⛰ ⛰       ⛰ 
-⛰ ⛰ _ ⛰   ⛰ ⛰ ⛰ _ ⛰ 
-  ⛰ _ ⛰     ⛰     ⛰ 
-_   ⛰ ⛰     ⛰ ⛰ ⛰ _ 
-⛰ _   _ _ ⛰ _ ⛰   _ 
-  _   _ ⛰ ⛰   _     
-  ⛰ ⛰           ⛰ ⛰ 
+    Ocean(size_t r, size_t c) : rows{r}, cols{c}, data{r * c}, iterationCounter{0}, stagnantCounter{0}{
+      srand(static_cast<unsigned int>(time(nullptr)));
+      // Fill the ocean with random organisms
+      for (size_t i = 0; i < r; i++){
+        for (size_t j = 0; j < c; j++)
+          data[i * c + j] = generateRandomObject();
+      }
+    }
 
-Iteration count: 15
-        ⛰ _ _ ⛰ ⛰   
-    ⛰     ⛰   ⛰ ⛰   
-⛰   _ _   _ ⛰ _   ⛰ 
-  ⛰     ⛰ ⛰       ⛰ 
-⛰ ⛰ _ ⛰   ⛰ ⛰ ⛰ _ ⛰ 
-  ⛰ _ ⛰     ⛰     ⛰ 
-_   ⛰ ⛰     ⛰ ⛰ ⛰ _ 
-⛰ _   _ _ ⛰ _ ⛰   _ 
-  _   _ ⛰ ⛰   _     
-  ⛰ ⛰           ⛰ ⛰ 
+  void tick() { 
+    for (size_t i = 0; i < rows; i++) {
+      for (size_t j = 0; j < cols; j++) {
+        if (data[i * cols + j]->getSymbol() == u8"∞" && !data[i * cols + j]->isMoved) {
+          bool moved = false;
+          while (!moved) {
+            int direction = rand() % 4; // 0: up, 1: down, 2: left, 3: right
+            int dirX = 0, dirY = 0;
+            if (direction == 0) dirY = -1; // Move up
+            else if (direction == 1) dirY = 1; // Move down
+            else if (direction == 2) dirX = -1; // Move left
+            else dirX = 1; // Move right
 
-Iteration count: 16
-        ⛰ _ _ ⛰ ⛰   
-    ⛰     ⛰   ⛰ ⛰   
-⛰   _ _   _ ⛰ _   ⛰ 
-  ⛰     ⛰ ⛰       ⛰ 
-⛰ ⛰ _ ⛰   ⛰ ⛰ ⛰ _ ⛰ 
-  ⛰ _ ⛰     ⛰     ⛰ 
-_   ⛰ ⛰     ⛰ ⛰ ⛰ _ 
-⛰ _   _ _ ⛰ _ ⛰   _ 
-  _   _ ⛰ ⛰   _     
-  ⛰ ⛰           ⛰ ⛰ 
+            size_t ni = i + dirX;
+            size_t nj = j + dirY;
 
-Iteration count: 17
-        ⛰ _ _ ⛰ ⛰   
-    ⛰     ⛰   ⛰ ⛰   
-⛰   _ _   _ ⛰ _   ⛰ 
-  ⛰     ⛰ ⛰       ⛰ 
-⛰ ⛰ _ ⛰   ⛰ ⛰ ⛰ _ ⛰ 
-  ⛰ _ ⛰     ⛰     ⛰ 
-_   ⛰ ⛰     ⛰ ⛰ ⛰ _ 
-⛰ _   _ _ ⛰ _ ⛰   _ 
-  _   _ ⛰ ⛰   _     
-  ⛰ ⛰           ⛰ ⛰ 
+            if (ni >= 0 && ni < rows && nj >= 0 && nj < cols && data[ni * cols + nj]->getSymbol() == " ") {
+              std::swap(data[i * cols + j], data[ni * cols + nj]);
+              data[ni * cols + nj]->isMoved = true;
+              moved = true;
+            }
+          }
+        }
+      }
+    }
 
-Iteration count: 18
-        ⛰ _ _ ⛰ ⛰   
-    ⛰     ⛰   ⛰ ⛰   
-⛰   _ _   _ ⛰ _   ⛰ 
-  ⛰     ⛰ ⛰       ⛰ 
-⛰ ⛰ _ ⛰   ⛰ ⛰ ⛰ _ ⛰ 
-  ⛰ _ ⛰     ⛰     ⛰ 
-_   ⛰ ⛰     ⛰ ⛰ ⛰ _ 
-⛰ _   _ _ ⛰ _ ⛰   _ 
-  _   _ ⛰ ⛰   _     
-  ⛰ ⛰           ⛰ ⛰ 
+    // Reset isMoved flag after each tick
+    for (size_t i = 0; i < rows; i++) {
+      for (size_t j = 0; j < cols; j++) {
+        if (data[i * cols + j]->getSymbol() == u8"∞") 
+          data[i * cols + j]->isMoved = false;
+      }
+    }
 
-Iteration count: 19
-        ⛰ _ _ ⛰ ⛰   
-    ⛰     ⛰   ⛰ ⛰   
-⛰   _ _   _ ⛰ _   ⛰ 
-  ⛰     ⛰ ⛰       ⛰ 
-⛰ ⛰ _ ⛰   ⛰ ⛰ ⛰ _ ⛰ 
-  ⛰ _ ⛰     ⛰     ⛰ 
-_   ⛰ ⛰     ⛰ ⛰ ⛰ _ 
-⛰ _   _ _ ⛰ _ ⛰   _ 
-  _   _ ⛰ ⛰   _     
-  ⛰ ⛰           ⛰ ⛰ 
+    
+    for (size_t i = 0; i < rows; i++){
+      for (size_t j = 0; j < cols; j++) {
+        data[i * cols + j]->update();
+        createNewPreyIfPossible(i, j);
+      }
+    }
 
+    iterationCounter++;
+  }
+
+  void display(){
+    clearScreen(); // Clear the screena 
+    std::cout << "Iteration count: " << iterationCounter << std::endl;
+    std::cout << "emptyCount: " << start_emptyCount << std::endl;
+    std::cout << "stoneCount: " << start_stoneCount << std::endl;
+    std::cout << "reefCount: " << start_reefCount << std::endl;
+    std::cout << "preyCount: " << start_preyCount << std::endl;
+    for (size_t i = 0; i < rows; i++){
+      for (size_t j = 0; j < cols; j++){
+        std::cout << data[i*cols + j]->getSymbol() << " ";
+      }
+      std::cout << std::endl;
+    }
+    Sleep(5000);
+    std::cout << std::endl;
+  }
+
+  private:
+    size_t rows, cols;
+    std::vector<Object*> data;
+    size_t stagnantCounter;
+
+
+    /* ----------------- GENERATION -------------------- */
+    Object* generateRandomObject(){
+      int randNum = rand() % 100; 
+      Object* newObj;
+      if (randNum < 70){
+        newObj = new Empty();
+        ++start_emptyCount;
+      } else if (randNum >= 70 && randNum < 80){
+        newObj = new Stone();
+        ++start_stoneCount;
+      }
+      else if (randNum >= 80 && randNum < 90){
+        newObj = new Reef();
+        ++start_reefCount;
+      } else {
+        newObj = new Prey();
+        ++start_preyCount;
+      }
+      return newObj;
+    }
+    /* ----------------- GENERATION -------------------- */
+
+
+
+    void createNewPreyIfPossible(size_t i, size_t j) {
+      bool maturePreyAdjacent = false;
+      bool emptyCellAdjacent = false;
+      for (int x = -1; x <= 1; ++x) {
+        for (int y = -1; y <= 1; ++y) {
+          size_t ni = i + x;
+          size_t nj = j + y;
+          if (ni >= 0 && ni < rows && nj >= 0 && nj < cols) {
+            if (data[ni * cols + nj]->getSymbol() == u8"∞" && data[ni * cols + nj]->isAdult == true) 
+              maturePreyAdjacent = true;
+            else if (data[ni * cols + nj]->getSymbol() == " ")
+              emptyCellAdjacent = true;
+          }
+        }
+      }
+
+      if (maturePreyAdjacent && emptyCellAdjacent && data[i * cols + j]->isAdult == true) {
+        for (int x = -1; x <= 1; ++x) {
+          for (int y = -1; y <= 1; ++y) {
+            size_t ni = i + x;
+            size_t nj = j + y;
+            if (ni >= 0 && ni < rows && nj >= 0 && nj < cols && data[ni * cols + nj]->getSymbol() == " ") {
+              data[ni * cols + nj] = new Prey();
+              return;
+            }
+          }
+        }
+      }
+    }
+
+    void movePrey() {
+      for (size_t i = 0; i < rows; i++) {
+        bool ch = false;
+        for (size_t j = 0; j < cols; j++) {
+          // if (data[i * cols + j]->getSymbol() == u8"\U0001F990") { // If Prey
+          if (data[i * cols + j]->getSymbol() == u8"∞") {
+            int dirX = rand() % 3 - 1; // -1, 0, 1
+            int dirY = rand() % 3 - 1; // -1, 0, 1
+            size_t ni = i + dirX;
+            size_t nj = j + dirY;
+            if (ni >= 0 && ni < rows && nj >= 0 && nj < cols && data[ni * cols + nj]->getSymbol() == " ") {
+              std::swap(data[i * cols + j], data[ni * cols + nj]);
+              ch = true;
+              break;
+            }
+          }
+        }
+        if (ch)
+          break;
+      }
+    }
+
+
+
+};
+
+int main(){
+  SetConsoleOutputCP(CP_UTF8);
+  std::string str = u8"\u263A";
+  std::cout << "Reef symbol: " << "🪸" << std::endl; // Unicode smiley face
+
+  Ocean ocean(10, 10);
+
+  while (true){
+
+    ocean.display();
+    ocean.tick();
+    if (ocean.iterationCounter >= 50)
+      break;
+  }
+
+  return 0;
+}
